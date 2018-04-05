@@ -1,9 +1,10 @@
 public class QuickSortMain<T extends Comparable<T>> {
 
     private T []a;
+
     public static void main(String[] args) {
 
-        QuickSort_Obj[] quickSortObjs = new QuickSort_Obj[5];
+        /*QuickSort_Obj[] quickSortObjs = new QuickSort_Obj[5];
         QuickSort_Obj quickSortObj = new QuickSort_Obj(5658);
         quickSortObjs[0] = quickSortObj;
         quickSortObj = new QuickSort_Obj(7412);
@@ -13,11 +14,14 @@ public class QuickSortMain<T extends Comparable<T>> {
         quickSortObj = new QuickSort_Obj(1254);
         quickSortObjs[3] = quickSortObj;
         quickSortObj = new QuickSort_Obj(4587);
-        quickSortObjs[4] = quickSortObj;
+        quickSortObjs[4] = quickSortObj;*/
 
-        QuickSortMain<QuickSort_Obj> ex = new QuickSortMain<>();
+        Legocsv csv = new Legocsv();
+        LegoItem[] items = csv.getItemsArray();
+
+        QuickSortMain<LegoItem> ex = new QuickSortMain<>();
         // Assigned array
-        ex.a = quickSortObjs;
+        ex.a = items;
 
 
         // prints the given array

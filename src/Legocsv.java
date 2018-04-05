@@ -7,7 +7,6 @@ import java.lang.Iterable;
 
 public class Legocsv {
     //Holds all lego items
-    //ArrayList items;
     LegoItem[] itemsArray;
 
     public Legocsv(){

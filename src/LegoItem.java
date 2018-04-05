@@ -1,8 +1,8 @@
-public class LegoItem {
+public class LegoItem implements Comparable<LegoItem> {
 
     private String item_number;
     private String name;
-    private String year;
+    private int year;
     private String theme;
     private String subtheme;
     private String pieces;
@@ -15,7 +15,7 @@ public class LegoItem {
     private String packaging;
     private String availability;
 
-    public LegoItem(String item_number, String name, String year, String theme, String subtheme, String pieces, String minifigures,
+    public LegoItem(String item_number, String name, int year, String theme, String subtheme, String pieces, String minifigures,
                     String image_url, String gbp_msrp, String usd_msrp, String cad_msrp, String eur_msrp, String packaging,
                     String availability){
 
@@ -43,7 +43,7 @@ public class LegoItem {
         return name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -89,5 +89,16 @@ public class LegoItem {
 
     public String getAvailability() {
         return availability;
+    }
+
+    public int compareTo(LegoItem li){
+        LegoItem e = (LegoItem)li;
+        if(this.year > e.year )
+            return 1;
+        if(this.year < e.year)
+            return -1;
+        if(this.year == e.year)
+            return 0;
+        return 0;
     }
 }
