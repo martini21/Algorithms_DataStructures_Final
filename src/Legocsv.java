@@ -8,7 +8,7 @@ import java.lang.Iterable;
 public class Legocsv {
     //Holds all lego items
     //ArrayList items;
-    LegoItem[] itemsArray;
+    public static LegoItem[] itemsArray;
 
     public Legocsv(){
         //holds items form the csv file
@@ -26,7 +26,7 @@ public class Legocsv {
         Legocsv newReader = new Legocsv();
     }
 
-    private void readFile() throws IOException{
+    public void readFile() throws IOException{
         //Reads file, and sets it to an excel format with the first line as the header
         Reader csvFile = new FileReader("lego.csv");
         Iterable<CSVRecord> itemsCsv = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(csvFile);
@@ -40,7 +40,6 @@ public class Legocsv {
             itemsArray[i] = newItem;
             i++;
         }
-        System.out.println(itemsArray.length);
     }
 
     public LegoItem[] getItemsArray(){

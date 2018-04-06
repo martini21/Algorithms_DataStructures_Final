@@ -1,34 +1,28 @@
-public class Binary_Search {
-    //TODO: change parameter name
-
-    public static int contains(int[]a, int b) {
+public class Binary_Search<T extends Comparable<T>> {
+    public boolean contains(T[]array, T value) {
         //For the first loop set the start and end of the array leave them as is
         int start = 0;
-        int end = a.length;
+        int end = array.length;
         while (start <= end) {
             //Set the mid of the array
             //If the mid is equal to the value we want to find return true.
             int mid = (start + end) / 2;
-            if (a[mid] == b) {
-                return b;
+            if (array[mid].compareTo(value) == 0) {
+                return true;
             }
             //Find in which half the value we want to find lies and adjust the parameters accordingly
-            if (a[mid] > b) {
+            if (array[mid].compareTo(value) > 0) {
                 end = mid - 1;
-                System.out.println("a");
+                System.out.println("array");
             } else {
                 start = mid + 1;
-                System.out.println("b");
+                System.out.println("value");
             }
         }
-        return -1;
+        return false;
     }
     public static void main(String[] args) {
 
-        int[] arr = {2, 4, 6, 8, 10, 12, 14, 16};
-        System.out.println("Key 14's position: "+contains(arr, 16));
-        int[] arr1 = {6,34,78,123,432,900};
-        System.out.println("Key 432's position: "+contains(arr1, 900));
     }
 
 }

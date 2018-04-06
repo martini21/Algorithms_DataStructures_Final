@@ -2,16 +2,16 @@ public class LegoItem {
 
     private String item_number;
     private String name;
-    private String year;
+    private int year;
     private String theme;
     private String subtheme;
-    private String pieces;
-    private String minifigures;
+    private int pieces;
+    private int minifigures;
     private String image_url;
-    private String gbp_msrp;
-    private String usd_msrp;
-    private String cad_msrp;
-    private String eur_msrp;
+    private float gbp_msrp;
+    private float usd_msrp;
+    private float cad_msrp;
+    private float eur_msrp;
     private String packaging;
     private String availability;
 
@@ -21,16 +21,20 @@ public class LegoItem {
 
         this.item_number = item_number;
         this.name = name;
-        this.year = year;
+        this.year = Integer.parseInt(year);
         this.theme = theme;
         this.subtheme = subtheme;
-        this.pieces = pieces;
-        this.minifigures = minifigures;
+        //If there are no pieces assign 0
+        this.pieces = (("NA".equals(pieces)) ? 0 : Integer.parseInt(pieces));;
+        //If there are no minifigures assign 0
+        this.minifigures = (("NA".equals(minifigures)) ? 0 : Integer.parseInt(minifigures));;
         this.image_url = image_url;
-        this.gbp_msrp = gbp_msrp;
-        this.usd_msrp = usd_msrp;
-        this.cad_msrp = cad_msrp;
-        this.eur_msrp = eur_msrp;
+        //TODO: change to -1 if it makes more sense
+        //If there are no set msrp assign 0
+        this.gbp_msrp = (("NA".equals(gbp_msrp)) ? 0 : Float.parseFloat(gbp_msrp));
+        this.usd_msrp = (("NA".equals(usd_msrp)) ? 0 : Float.parseFloat(usd_msrp));
+        this.cad_msrp = (("NA".equals(cad_msrp)) ? 0 : Float.parseFloat(cad_msrp));
+        this.eur_msrp = (("NA".equals(eur_msrp)) ? 0 : Float.parseFloat(eur_msrp));
         this.packaging = packaging;
         this.availability = availability;
     }
@@ -43,7 +47,7 @@ public class LegoItem {
         return name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -55,11 +59,11 @@ public class LegoItem {
         return subtheme;
     }
 
-    public String getPieces() {
+    public int getPieces() {
         return pieces;
     }
 
-    public String getMinifigures() {
+    public int getMinifigures() {
         return minifigures;
     }
 
@@ -67,19 +71,19 @@ public class LegoItem {
         return image_url;
     }
 
-    public String getGbp_msrp() {
+    public float getGbp_msrp() {
         return gbp_msrp;
     }
 
-    public String getUsd_msrp() {
+    public float getUsd_msrp() {
         return usd_msrp;
     }
 
-    public String getCad_msrp() {
+    public float getCad_msrp() {
         return cad_msrp;
     }
 
-    public String getEur_msrp() {
+    public float getEur_msrp() {
         return eur_msrp;
     }
 

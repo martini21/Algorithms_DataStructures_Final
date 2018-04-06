@@ -1,65 +1,54 @@
-public class Binary_Search_tree {
+public class Binary_Search_tree<T extends Comparable<T>> {
     public static  Node root;
     public static void main(String[] args) {
-        Binary_Search_tree bst = new Binary_Search_tree();
-        Node node = new Node(15);
-        Node node1 = new Node(7);
-        Node node2 = new Node(6);
-        Node node3 = new Node(9);
-        Node node4 = new Node(48);
-        Node node5 = new Node(19);
-        Node node6 = new Node(22);
-        Node node7 = new Node(32);
-        Node node8 = new Node(75);
-        Node node9 = new Node(500);
-        insert(node1);
-        insert(node2);
-        insert(node3);
-        insert(node4);
-        insert(node5);
-        insert(node6);
-        insert(node7);
-        insert(node8);
-        find(node9);
     }
     public Binary_Search_tree(){
         this.root = null;
     }
-    public static void insert(Node node){
+    public Node getRoot(){
+        return root;
+    }
+    public boolean insert(Node node){
         if(root == null){
             root = node;
-            return;
+            return true;
         }
         else{
             Node currentnode = root;
             while(true){
-                 if(node.getData() > currentnode.getData()){
+                 if(node.getData().compareTo(currentnode.getData()) == 0){
+                    return true;
+                 }
+                 else if(node.getData().compareTo(currentnode.getData()) > 0){
                      if(currentnode.getRight() == null){
                          currentnode.setRight(node);
-                         System.out.println("inserted " + node.getData() + " to the right of " + currentnode.getData());
-                         return;
+                         return true;
                      }
                      else {
                          currentnode = currentnode.getRight();
                      }
                  }
-                 else if(node.getData() < currentnode.getData()){
+                 else if(node.getData().compareTo(currentnode.getData()) < 0){
                     if(currentnode.getLeft() == null){
-                        System.out.println("inserted " + node.getData() + " to the left of " + currentnode.getData());
                         currentnode.setLeft(node);
-                        return;
+                        return true;
                     }
                     else {
                         currentnode = currentnode.getLeft();
                     }
                 }
+
             }
         }
     }
-    public static boolean find(Node node){
+    public boolean findNode(Node node){
             Node currentnode = root;
             while(true){
-                if(node.getData() > currentnode.getData()){
+                if(node.getData() == currentnode.getData()){
+                    System.out.println("here");
+                    return true;
+                }
+                else if(node.getData().compareTo(currentnode.getData()) > 0){
                     if(currentnode.getRight() == null){
                         System.out.println("not here");
                         return false;
@@ -68,7 +57,7 @@ public class Binary_Search_tree {
                         currentnode = currentnode.getRight();
                     }
                 }
-                else if(node.getData() < currentnode.getData()){
+                else if(node.getData().compareTo(currentnode.getData()) < 0){
                     if(currentnode.getLeft() == null){
                         System.out.println("not here");
                         return false;
@@ -77,25 +66,49 @@ public class Binary_Search_tree {
                         currentnode = currentnode.getLeft();
                     }
                 }
-                else if(node.getData() == currentnode.getData()){
-                    System.out.println(" here");
-                    return true;
-                }
             }
         }
-    }
+    public Node findinNodes(T value){
+        Node currentnode = root;
+        while(true){
+            if(currentnode.getData().compareTo(value) == 0){
+                System.out.println("here");
+                return currentnode;
+            }
+            else if(currentnode.getData().compareTo(value) < 0){
+                if(currentnode.getRight() == null){
+                    System.out.println("not here");
+                    return null;
+                }
+                else {
+                    currentnode = currentnode.getRight();
+                }
+            }
+            else if(currentnode.getData().compareTo(value) > 0){
+                if(currentnode.getLeft() == null){
+                    System.out.println("not here");
+                    return null;
+                }
+                else {
+                    currentnode = currentnode.getLeft();
+                }
+            }
 
-class Node{
-    int data;
-    Node left;
-    Node right;
-    public Node(int data){
-        this.data = data;
+        }
+    }
+}
+
+class Node<T extends Comparable<T>>{
+    private T value;
+    private Node left;
+    private Node right;
+    public Node(T value){
+        this.value = value;
         left = null;
         right = null;
     }
-    public int getData(){
-        return data;
+    public T getData(){
+        return value;
     }
     public Node getLeft(){
         return left;
