@@ -1,7 +1,6 @@
 public class Binary_Search_tree<T extends Comparable<T>> {
     public static  Node root;
-    public static void main(String[] args) {
-    }
+
     public Binary_Search_tree(){
         this.root = null;
     }
@@ -68,6 +67,7 @@ public class Binary_Search_tree<T extends Comparable<T>> {
                 }
             }
         }
+
     public Node findinNodes(T value){
         Node currentnode = root;
         while(true){
@@ -96,6 +96,17 @@ public class Binary_Search_tree<T extends Comparable<T>> {
 
         }
     }
+
+    public int size() {
+        return(size(root));
+    }
+    private int size(Node node) {
+        if (node == null) return(0);
+        else {
+            return(size(node.getLeft()) + 1 + size(node.getRight()));
+        }
+    }
+
 }
 
 class Node<T extends Comparable<T>>{

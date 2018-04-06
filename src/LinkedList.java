@@ -27,7 +27,7 @@ class LinkedList {
         this.head = new_node;
     }
 
-    //Inserts a new node after a prev_node
+    //Inserts a new node after prev_node
     public void insertAfter(Node prev_node, Object new_data)
     {
         //Check if the prev_node is null

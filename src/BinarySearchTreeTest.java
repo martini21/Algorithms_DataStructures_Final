@@ -1,55 +1,46 @@
-
-/*
+import java.io.IOException;
+import java.util.Random;
 import static org.junit.Assert.*;
 
 public class BinarySearchTreeTest {
     private Binary_Search_tree bst;
+    //Might need to be deleted
+    private Legocsv legocsv;
 
-    @org.junit.Before
-    public void Before()
-    {
+    public BinarySearchTreeTest(){
         this.bst = new Binary_Search_tree();
+        //Might need to be deleted
+        legocsv = new Legocsv();
     }
 
     @org.junit.Test
-    public void isFull()
-    {
-        this.queue.enqueue(5);
-        this.queue.enqueue(5);
-        this.queue.enqueue(5);
-        assertTrue(this.queue.isFull());
-        this.queue.dequeue();
-        assertFalse(this.queue.isFull());
-    }
-}*/
-
-import java.io.IOException;
-import java.util.Random;
-
-public class BinarySearchTreeTest {
-    private Binary_Search_tree bst;
-    public static void main(String[] args){
-        BinarySearchTreeTest bsttest = new BinarySearchTreeTest();
-        bsttest.insertNodes();
-        bsttest.findRandom();
-    }
-    BinarySearchTreeTest(){
-        this.bst = new Binary_Search_tree();
-    }
     public void insertNodes(){
-       try{
+        //Arrange
+
+        //Act
+        for (LegoItem item : Legocsv.itemsArray ) {
+            bst.insert(new Node(item.getUsd_msrp()));
+        }
+        //Assert
+        assertEquals(323,bst.size());
+
+        /*try{
            new Legocsv().readFile();
         }
         catch (IOException e){
             e.printStackTrace();
-        }
-        for (LegoItem item : Legocsv.itemsArray ) {
-            bst.insert(new Node(item.getUsd_msrp()));
-        }
+        }*/
     }
-    public void findRandom(){
-        //Find a node using a random msrp value and then find the same node
-    bst.findNode(bst.findinNodes(Legocsv.itemsArray[new Random().nextInt(Legocsv.itemsArray.length)].getUsd_msrp()));
 
+    @org.junit.Test
+    public void findRandom(){
+        //Arrange
+        insertNodes(); //Needed so there is something to find in the tree
+        float randomFloat = Legocsv.itemsArray[new Random().nextInt(Legocsv.itemsArray.length)].getUsd_msrp();
+        //Act
+        //Find a node using a random msrp value and then find the same node
+        Boolean foundNode = bst.findNode(bst.findinNodes(randomFloat));
+        //Assert
+        assertTrue(foundNode);
     }
 }

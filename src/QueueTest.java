@@ -2,65 +2,111 @@ import static org.junit.Assert.*;
 
 public class QueueTest {
     private Queue queue;
+    //Might need to be deleted
+    private Legocsv legocsv;
 
     @org.junit.Before
     public void Before()
     {
         this.queue = new Queue(3);
+        //Might need to be deleted
+        legocsv = new Legocsv();
     }
 
     @org.junit.Test
     public void isFull()
     {
-        this.queue.enqueue(5);
-        this.queue.enqueue(5);
-        this.queue.enqueue(5);
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        LegoItem itemTwo = Legocsv.itemsArray[1];
+        LegoItem itemThree = Legocsv.itemsArray[2];
+        //Act
+        this.queue.enqueue(itemOne);
+        this.queue.enqueue(itemTwo);
+        this.queue.enqueue(itemThree);
+        //Assert
         assertTrue(this.queue.isFull());
+        //ActAgain
         this.queue.dequeue();
+        //AssertAgain
         assertFalse(this.queue.isFull());
     }
 
     @org.junit.Test
     public void isEmpty()
     {
-        this.queue.enqueue(5);
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        LegoItem itemTwo = Legocsv.itemsArray[1];
+        //Act
+        this.queue.enqueue(itemOne);
         this.queue.dequeue();
+        //Assert
         assertTrue(this.queue.isEmpty());
-        this.queue.enqueue(5);
+        //ActAgain
+        this.queue.enqueue(itemTwo);
+        //AssertAgain
         assertFalse(this.queue.isEmpty());
     }
 
     @org.junit.Test
     public void enqueue()
     {
-        assertTrue(this.queue.enqueue(5));
-        this.queue.enqueue(5);
-        this.queue.enqueue(5);
-        assertFalse(this.queue.enqueue(5));
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        LegoItem itemTwo = Legocsv.itemsArray[1];
+        LegoItem itemThree = Legocsv.itemsArray[2];
+        LegoItem itemFour = Legocsv.itemsArray[3];
+        //Act
+        Boolean enq = this.queue.enqueue(itemOne);
+        //Assert
+        assertTrue(enq);
+        //ActAgain
+        this.queue.enqueue(itemTwo);
+        this.queue.enqueue(itemThree);
+        Boolean otherEnq = this.queue.enqueue(itemFour);
+        //AssertAgain
+        assertFalse(otherEnq);
     }
 
     @org.junit.Test
     public void dequeue()
     {
+        //Assert
         assertEquals(null, this.queue.dequeue());
-        this.queue.enqueue(5);
-        assertEquals(5, this.queue.dequeue());
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        //Act
+        this.queue.enqueue(itemOne);
+        //AssertAgain
+        assertEquals(itemOne, this.queue.dequeue());
     }
 
     @org.junit.Test
     public void front()
     {
+        //Assert
         assertEquals(null, this.queue.front());
-        this.queue.enqueue(5);
-        assertEquals(5, this.queue.front());
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        //Act
+        this.queue.enqueue(itemOne);
+        //AssertAgain
+        assertEquals(itemOne, this.queue.front());
     }
 
     @org.junit.Test
     public void rear()
     {
+        //Assert
         assertEquals(null, this.queue.rear());
-        this.queue.enqueue(5);
-        this.queue.enqueue(3);
-        assertEquals(3, this.queue.rear());
+        //Arrange
+        LegoItem itemOne = Legocsv.itemsArray[0];
+        LegoItem itemTwo = Legocsv.itemsArray[1];
+        //Act
+        this.queue.enqueue(itemOne);
+        this.queue.enqueue(itemTwo);
+        //AssertAgain
+        assertEquals(itemTwo, this.queue.rear());
     }
 }

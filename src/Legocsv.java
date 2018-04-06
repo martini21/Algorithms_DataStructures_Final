@@ -2,12 +2,10 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.lang.Iterable;
 
 public class Legocsv {
     //Holds all lego items
-    //ArrayList items;
     public static LegoItem[] itemsArray;
 
     public Legocsv(){
@@ -40,9 +38,5 @@ public class Legocsv {
             itemsArray[i] = newItem;
             i++;
         }
-    }
-
-    public LegoItem[] getItemsArray(){
-        return itemsArray;
     }
 }
