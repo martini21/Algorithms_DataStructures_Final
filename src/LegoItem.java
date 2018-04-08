@@ -1,4 +1,4 @@
-public class LegoItem {
+public class LegoItem implements Comparable<LegoItem> {
 
     private String item_number;
     private String name;
@@ -37,6 +37,17 @@ public class LegoItem {
         this.eur_msrp = (("NA".equals(eur_msrp)) ? 0 : Float.parseFloat(eur_msrp));
         this.packaging = packaging;
         this.availability = availability;
+    }
+    public int compareTo(LegoItem item){
+        if(this.getPieces() > item.getPieces()){
+            return 1;
+        }
+        else if (this.getPieces() > item.getPieces()){
+            return -1;
+        }
+        else{
+            return 0;
+        }
     }
 
     public String getItem_number() {

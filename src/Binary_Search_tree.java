@@ -1,4 +1,4 @@
-public class Binary_Search_tree<T extends Comparable<T>> {
+public class Binary_Search_tree {
     public static  Node root;
     public static void main(String[] args) {
     }
@@ -44,7 +44,7 @@ public class Binary_Search_tree<T extends Comparable<T>> {
     public boolean findNode(Node node){
             Node currentnode = root;
             while(true){
-                if(node.getData() == currentnode.getData()){
+                if(node.getData().compareTo(currentnode.getData()) == 0 ){
                     System.out.println("here");
                     return true;
                 }
@@ -68,14 +68,14 @@ public class Binary_Search_tree<T extends Comparable<T>> {
                 }
             }
         }
-    public Node findinNodes(T value){
+    public Node findinNodes(LegoItem item){
         Node currentnode = root;
         while(true){
-            if(currentnode.getData().compareTo(value) == 0){
+            if(currentnode.getData().compareTo(item) == 0){
                 System.out.println("here");
                 return currentnode;
             }
-            else if(currentnode.getData().compareTo(value) < 0){
+            else if(currentnode.getData().compareTo(item) < 0){
                 if(currentnode.getRight() == null){
                     System.out.println("not here");
                     return null;
@@ -84,7 +84,7 @@ public class Binary_Search_tree<T extends Comparable<T>> {
                     currentnode = currentnode.getRight();
                 }
             }
-            else if(currentnode.getData().compareTo(value) > 0){
+            else if(currentnode.getData().compareTo(item) > 0){
                 if(currentnode.getLeft() == null){
                     System.out.println("not here");
                     return null;
@@ -98,17 +98,17 @@ public class Binary_Search_tree<T extends Comparable<T>> {
     }
 }
 
-class Node<T extends Comparable<T>>{
-    private T value;
+class Node{
+    private LegoItem item;
     private Node left;
     private Node right;
-    public Node(T value){
-        this.value = value;
+    public Node(LegoItem item){
+        this.item = item;
         left = null;
         right = null;
     }
-    public T getData(){
-        return value;
+    public LegoItem getData(){
+        return item;
     }
     public Node getLeft(){
         return left;
